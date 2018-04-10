@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{AA866C5C-2B27-43A3-9AC7-906D7F18C085}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TelloSdkCoreNet/actions/FlyActions.cs">
+    <Files>
+      <File FileName="TestApp/Program.cs" Line="34" Column="57" />
+      <File FileName="TelloDroneSimulator/Program.cs" Line="1" Column="1" />
+      <File FileName="TelloSdkCoreNet/TelloUdpClient.cs" Line="25" Column="1" />
+      <File FileName="TelloSdkCoreNet/SdkWrapper.cs" Line="37" Column="32" />
+      <File FileName="TelloSdkCoreNet/actions/SpeedAction.cs" Line="16" Column="1" />
+      <File FileName="TelloSdkCoreNet/actions/BaseActions.cs" Line="38" Column="32" />
+      <File FileName="TelloSdkCoreNet/actions/Action.cs" Line="7" Column="39" />
+      <File FileName="TelloSdkCoreNet/actions/BaseAction.cs" Line="32" Column="1" />
+      <File FileName="TelloSdkCoreNet/actions/FlipActions.cs" Line="18" Column="16" />
+      <File FileName="TelloSdkCoreNet/actions/IAction.cs" Line="7" Column="22" />
+      <File FileName="TelloSdkCoreNet/actions/FlyActions.cs" Line="64" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TestApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
