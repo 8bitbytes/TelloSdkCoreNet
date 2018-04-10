@@ -11,6 +11,7 @@ namespace TelloSdkCoreNet
         private IPAddress _ipaddress;
         private IPEndPoint _endpoint;
         private string _serverReponse;
+        private bool _commandMode = false;
 
         public TelloUdpClient(IPAddress ipaddress,IPEndPoint endpoint)
         {
@@ -20,8 +21,13 @@ namespace TelloSdkCoreNet
         }
 
         public string ServerResponse => _serverReponse;
+        public bool CommandModeEnabled => _commandMode;
         public SdkWrapper.SdkReponses SendMessage(actions.Action action)
         {
+            if(action.Type == actions.Action.ActionTypes.CommandMode && _commandMode)
+            {
+                return SdkWrapper.SdkReponses.OK;
+            }
             if (_client == null)
             {
                 return SdkWrapper.SdkReponses.FAIL;
@@ -30,6 +36,7 @@ namespace TelloSdkCoreNet
             var data = Encoding.ASCII.GetBytes(action.Command);
             _client.Send(data, data.Length);
             var RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, _endpoint.Port + 1);
+            _client.Client.ReceiveTimeout = 2500;
             var receiveBytes = _client.Receive(ref RemoteIpEndPoint);
             _serverReponse = Encoding.ASCII.GetString(receiveBytes);
 
@@ -37,6 +44,10 @@ namespace TelloSdkCoreNet
             {
                 return _serverReponse == "FAIL" ? SdkWrapper.SdkReponses.FAIL
                                                 : SdkWrapper.SdkReponses.OK;
+            }
+            if(action.Type == actions.Action.ActionTypes.CommandMode && _serverReponse == "OK")
+            {
+                _commandMode = true;
             }
             return _serverReponse == "OK" ? SdkWrapper.SdkReponses.OK
                                           : SdkWrapper.SdkReponses.FAIL;

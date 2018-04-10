@@ -25,7 +25,7 @@ namespace TelloSdkCoreNet.actions
             newItem = new Action("Auto land", "land", Action.ActionTypes.Control, Client);
             _actionCache.Add("land", newItem);
 
-            newItem = new Action("command", "command", Action.ActionTypes.Control, Client);
+            newItem = new Action("command", "command", Action.ActionTypes.CommandMode, Client);
             _actionCache.Add("command", newItem);
 
             //read commands
@@ -41,22 +41,10 @@ namespace TelloSdkCoreNet.actions
         }
         public Action TakeOff() => _actionCache.GetValueOrDefault("takeoff");
         public Action Land() => _actionCache.GetValueOrDefault("land");
-        public Action CommandMode() => _actionCache.GetValueOrDefault("command");
+        internal Action CommandMode() => _actionCache.GetValueOrDefault("command");
         public Action QuerySpeed() => _actionCache.GetValueOrDefault("speed?");
         public Action QueryBattery() => _actionCache.GetValueOrDefault("battery?");
         public Action QueryFlightTime() => _actionCache.GetValueOrDefault("time?");
 
-        public SdkWrapper.SdkReponses CommandModeGuard()
-        {
-            if (_inCommandMode)
-            {
-                return SdkWrapper.SdkReponses.OK;
-            }
-
-            var resp = CommandMode().Execute();
-            _lastException = CommandMode().LastException;
-            _inCommandMode = resp == SdkWrapper.SdkReponses.OK ? true : false;
-            return resp;
-        }
     }
 }

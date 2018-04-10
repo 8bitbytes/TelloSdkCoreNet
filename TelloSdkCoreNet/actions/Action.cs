@@ -10,9 +10,10 @@ namespace TelloSdkCoreNet.actions
 
         public enum ActionTypes
         {
+            CommandMode,
             Control,
             Read,
-            Set
+            Set,
         }
         public string Name => _actionName;
         public string Command => _actionCommand;
@@ -30,6 +31,18 @@ namespace TelloSdkCoreNet.actions
         }
         public SdkWrapper.SdkReponses Execute()
         {
+            if(this.Type != ActionTypes.CommandMode)
+            {
+                if (!Client.CommandModeEnabled)
+                {
+                    var baseActions = new BaseActions(Client);
+                    var resp = SendCommand(baseActions.CommandMode());
+                    if(resp != SdkWrapper.SdkReponses.OK)
+                    {
+                        return resp;
+                    }
+                }
+            }
             var retval = SendCommand(this);
             _lastException = base.LastException;
             return retval;

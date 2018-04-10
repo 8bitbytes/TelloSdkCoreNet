@@ -6,133 +6,124 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            var wrapper = new SdkWrapper();
-            var fp = TelloSdkCoreNet.flightplans.FlightPlan.Materialize(System.IO.File.ReadAllText(@"C:\Users\hallp\Downloads\TelloSdkCoreNet-development\TelloSdkCoreNet-development\TestApp\FP_4-10-2018 24809 PM_1f6623a2.json.fp"));
-            fp.Items.Add(new TelloSdkCoreNet.flightplans.FlightPlanItem
+            using(var wrapper = new SdkWrapper())
             {
-                Action = wrapper.BaseActions.QueryBattery()
-            });
-               
-            wrapper.ExecuteFlightPlan(fp);
-            /*var resp = wrapper.ExecuteActions(new TelloSdkCoreNet.actions.Action[]
-             {
-                 wrapper.BaseActions.TakeOff(),
-                 wrapper.FlipActions.FlipBackLeft(),
-                 wrapper.FlipActions.FlipBackRight(),
-                 wrapper.RotationActions.RotateClockwise(45),
-                 wrapper.FlyActions.FlyDownward(40),
-                 wrapper.BaseActions.Land()
-             },2);
-             if(resp == SdkWrapper.SdkReponses.FAIL)
-             {
-                 WriteError(wrapper.LastException.ToString());
-             }*/
+                try
+                {
+                    var fp = TelloSdkCoreNet.flightplans.FlightPlan.Materialize(System.IO.File.ReadAllText(@"C:\Users\hallp\Downloads\TelloSdkCoreNet-development\TelloSdkCoreNet-development\TestApp\FP_4-10-2018 24809 PM_1f6623a2.json.fp"));
+                    fp.Items.Add(new TelloSdkCoreNet.flightplans.FlightPlanItem
+                    {
+                        Action = wrapper.BaseActions.QueryBattery()
+                    });
 
-
-            //wrapper.BaseActions.Land().Execute();
-            //CreateFlightPlan();
+                    wrapper.ExecuteFlightPlan(fp);
+                }
+                catch(Exception ex)
+                {
+                    WriteError(ex.Message);
+                }
+            }
+            
             PrintMenu();
 
             Console.ReadLine();
         }
         static void CreateFlightPlan()
         {
-            var wrapper = new SdkWrapper();
-            var fp = new TelloSdkCoreNet.flightplans.FlightPlan();
-            var fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+            using (var wrapper = new SdkWrapper())
+            {
+                var fp = new TelloSdkCoreNet.flightplans.FlightPlan();
+                var fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
 
-            fpItem.Action = wrapper.BaseActions.CommandMode();
-            fpItem.NumberOfTimesToExecute = 1;
-            fpItem.SecondsToWaitBeforeNext = 2;
+                fpItem.Action = wrapper.BaseActions.TakeOff();
 
-            fp.Items.Add(fpItem);
+                fp.Items.Add(fpItem);
 
-            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
-            fpItem.Action = wrapper.BaseActions.TakeOff();
+                fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+                fpItem.Action = wrapper.FlipActions.FlipBackLeft();
+                fp.Items.Add(fpItem);
 
-            fp.Items.Add(fpItem);
+                fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+                fpItem.Action = wrapper.FlipActions.FlipBackRight();
+                fp.Items.Add(fpItem);
 
-            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
-            fpItem.Action = wrapper.FlipActions.FlipBackLeft();
-            fp.Items.Add(fpItem);
+                fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+                fpItem.Action = wrapper.RotationActions.RotateClockwise(45);
+                fp.Items.Add(fpItem);
 
-            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
-            fpItem.Action = wrapper.FlipActions.FlipBackRight();
-            fp.Items.Add(fpItem);
+                fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+                fpItem.Action = wrapper.FlyActions.FlyDownward(40);
+                fp.Items.Add(fpItem);
 
-            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
-            fpItem.Action = wrapper.RotationActions.RotateClockwise(45);
-            fp.Items.Add(fpItem);
+                fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+                fpItem.Action = wrapper.BaseActions.Land();
+                fp.Items.Add(fpItem);
+            }
 
-            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
-            fpItem.Action = wrapper.FlyActions.FlyDownward(40);
-            fp.Items.Add(fpItem);
-
-            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
-            fpItem.Action = wrapper.BaseActions.Land();
-            fp.Items.Add(fpItem);
-
-            fp.Save("");
+            //fp.Save("");
         }
         static void PrintMenu(){
             var done = false;
-            var wrapper = new SdkWrapper();
-            //wrapper.BaseActions.CommandMode().Execute();
-            while(!done){
-                Console.Clear();
-                Console.WriteLine("1.TakeOff");
-                Console.WriteLine("2.Land");
-                Console.WriteLine("3.Flip");
-                Console.WriteLine("4.Fly forward");
-                Console.WriteLine("5.Fly back");
-                Console.WriteLine("6.Rotate");
-                Console.WriteLine("7.Battery %");
-
-                var choice = Console.ReadLine();
-
-                switch (choice)
+            using (var wrapper = new SdkWrapper())
+            {
+                //wrapper.BaseActions.CommandMode().Execute();
+                while (!done)
                 {
-                    case "1":
-                        {
-                            wrapper.BaseActions.TakeOff().Execute();
-                            break;
-                        }
-                    case "2":
-                        {
-                            wrapper.BaseActions.Land().Execute();
-                            break;
-                        }
-                    case "3":
-                        {
-                            wrapper.FlipActions.FlipForward().Execute();
-                            break;
-                        }
-                    case "4":
-                        {
-                            wrapper.FlyActions.FlyForward(50).Execute();
-                            break;
-                        }
-                    case "5":
-                        {
-                            wrapper.FlyActions.FlyBack(50).Execute();
-                            break;
-                        }
-                    case "6":
-                        {
-                            wrapper.RotationActions.RotateClockwise(360).Execute();
-                            break;
-                        }
-                    case "7":
-                        {
-                            var resp = wrapper.BaseActions.QueryBattery().Execute();
-                            if(resp == SdkWrapper.SdkReponses.OK)
-                            {
-                                Console.WriteLine($"Battery percentage is {wrapper.BaseActions.QueryBattery().ServerResponse}%");
-                                Console.ReadLine();
-                            }
-                            break;
-                        }
+                    Console.Clear();
+                    Console.WriteLine("1.TakeOff");
+                    Console.WriteLine("2.Land");
+                    Console.WriteLine("3.Flip");
+                    Console.WriteLine("4.Fly forward");
+                    Console.WriteLine("5.Fly back");
+                    Console.WriteLine("6.Rotate");
+                    Console.WriteLine("7.Battery %");
 
+                    var choice = Console.ReadLine();
+
+                    switch (choice)
+                    {
+                        case "1":
+                            {
+                                wrapper.BaseActions.TakeOff().Execute();
+                                break;
+                            }
+                        case "2":
+                            {
+                                wrapper.BaseActions.Land().Execute();
+                                break;
+                            }
+                        case "3":
+                            {
+                                wrapper.FlipActions.FlipForward().Execute();
+                                break;
+                            }
+                        case "4":
+                            {
+                                wrapper.FlyActions.FlyForward(50).Execute();
+                                break;
+                            }
+                        case "5":
+                            {
+                                wrapper.FlyActions.FlyBack(50).Execute();
+                                break;
+                            }
+                        case "6":
+                            {
+                                wrapper.RotationActions.RotateClockwise(360).Execute();
+                                break;
+                            }
+                        case "7":
+                            {
+                                var resp = wrapper.BaseActions.QueryBattery().Execute();
+                                if (resp == SdkWrapper.SdkReponses.OK)
+                                {
+                                    Console.WriteLine($"Battery percentage is {wrapper.BaseActions.QueryBattery().ServerResponse}%");
+                                    Console.ReadLine();
+                                }
+                                break;
+                            }
+
+                    }
                 }
             }
         }
