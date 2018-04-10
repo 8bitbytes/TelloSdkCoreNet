@@ -31,7 +31,7 @@ namespace TestApp
         static void PrintMenu(){
             var done = false;
             var wrapper = new SdkWrapper();
-            wrapper.BaseActions.CommandMode().Execute();
+            //wrapper.BaseActions.CommandMode().Execute();
             while(!done){
                 Console.Clear();
                 Console.WriteLine("1.TakeOff");
@@ -57,22 +57,22 @@ namespace TestApp
                         }
                     case "3":
                         {
-                            wrapper.FlipActions.FlipForward();
+                            wrapper.FlipActions.FlipForward().Execute();
                             break;
                         }
                     case "4":
                         {
-                            wrapper.FlyActions.FlyForward(5);
+                            wrapper.FlyActions.FlyForward(50).Execute();
                             break;
                         }
                     case "5":
                         {
-                            wrapper.FlyActions.FlyBack(5);
+                            wrapper.FlyActions.FlyBack(50).Execute();
                             break;
                         }
                     case "6":
                         {
-                            wrapper.RotationActions.RotateClockwise(360);
+                            wrapper.RotationActions.RotateClockwise(360).Execute();
                             break;
                         }
 

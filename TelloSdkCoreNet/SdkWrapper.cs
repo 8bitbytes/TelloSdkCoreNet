@@ -70,6 +70,7 @@ namespace TelloSdkCoreNet
                 if(resp == SdkReponses.FAIL)
                 {
                     _lastException = action.LastException;
+                    Console.WriteLine($"Action {action.ActionName} failed to execute");
                     return resp;
                 }
                 System.Threading.Thread.Sleep(secondsBetweenCommand * 1000);
