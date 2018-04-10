@@ -42,51 +42,6 @@ namespace TelloSdkCoreNet
             _udpClient.Close();
         }
 
-        private void CreateClient()
-        {
-            //_ipAddress = IPAddress.Parse("192.168.10.1");
-            _ipAddress = IPAddress.Parse("10.30.54.81");
-            _endpoint = new IPEndPoint(_ipAddress, 8889);
-            _udpClient = new TelloUdpClient(_ipAddress,_endpoint);
-        }
-        public SdkReponses ExecuteAction(actions.Action action)
-        {
-            if (BaseActions.CommandModeGuard() == SdkReponses.FAIL)
-            {
-                _lastException = BaseActions.LastException;
-                return SdkReponses.FAIL;
-            }
-            return action.Execute();
-        }
-        [Obsolete("Create and use flight plan.")]
-        public SdkReponses ExecuteActions(actions.Action[] actions,int secondsBetweenCommand)
-        {
-            var nonCommandActions = actions.Where(a => a.Type == TelloSdkCoreNet.actions.Action.ActionTypes.Read).ToArray();
-            if(nonCommandActions.Length > 0)
-            {
-                throw new ArgumentException("Flight plans cannot include query actions");
-            }
-            if (BaseActions.CommandModeGuard() == SdkReponses.FAIL)
-            {
-                _lastException = BaseActions.CommandMode().LastException;
-                return SdkReponses.FAIL;
-            }
-
-            foreach(var action in actions)
-            {
-               var resp = action.Execute();
-                if(resp == SdkReponses.FAIL)
-                {
-                    _lastException = action.LastException;
-                    Console.WriteLine($"Action {action.Name} failed to execute");
-                    return resp;
-                }
-
-                System.Threading.Thread.Sleep(secondsBetweenCommand * 1000);
-            }
-            return SdkReponses.OK;
-        }
-
         public SdkReponses ExecuteFlightPlan(flightplans.FlightPlan flightPlan)
         {
             var nonCommandActions = flightPlan.Items.Where(a => a.Action.Type == TelloSdkCoreNet.actions.Action.ActionTypes.Read).ToArray();
@@ -97,10 +52,10 @@ namespace TelloSdkCoreNet
             foreach (var fpi in flightPlan.Items)
             {
                 var exeCount = fpi.NumberOfTimesToExecute;
-                while(exeCount > 0)
+                while (exeCount > 0)
                 {
                     fpi.Action.Client = _udpClient;
-                    if(fpi.Action.Execute() == SdkReponses.FAIL)
+                    if (fpi.Action.Execute() == SdkReponses.FAIL)
                     {
                         return SdkReponses.FAIL;
                     }
@@ -110,5 +65,14 @@ namespace TelloSdkCoreNet
             }
             return SdkReponses.OK;
         }
+
+        private void CreateClient()
+        {
+            _ipAddress = IPAddress.Parse("192.168.10.1");
+            _endpoint = new IPEndPoint(_ipAddress, 8889);
+            _udpClient = new TelloUdpClient(_ipAddress,_endpoint);
+        }
+        
+        
     }
 }
