@@ -43,7 +43,6 @@ namespace TelloSdkCoreNet
 
         private void CreateClient()
         {
-            //_ipAddress = IPAddress.Parse("10.30.54.81");
             _ipAddress = IPAddress.Parse("192.168.10.1");
             _endpoint = new IPEndPoint(_ipAddress, 8889);
             _udpClient = new TelloUdpClient(_ipAddress,_endpoint);

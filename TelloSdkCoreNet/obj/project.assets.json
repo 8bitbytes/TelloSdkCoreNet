@@ -670,17 +670,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/peterhallock/Documents/TelloSdkCoreNet/TelloSdkCoreNet/TelloSdkCoreNet.csproj",
+      "projectUniqueName": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloSdkCoreNet/TelloSdkCoreNet.csproj",
       "projectName": "TelloSdkCoreNet",
-      "projectPath": "/Users/peterhallock/Documents/TelloSdkCoreNet/TelloSdkCoreNet/TelloSdkCoreNet.csproj",
+      "projectPath": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloSdkCoreNet/TelloSdkCoreNet.csproj",
       "packagesPath": "/Users/peterhallock/.nuget/packages/",
-      "outputPath": "/Users/peterhallock/Documents/TelloSdkCoreNet/TelloSdkCoreNet/obj/",
+      "outputPath": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloSdkCoreNet/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/peterhallock/.nuget/NuGet/NuGet.Config"
+        "/Users/peterhallock/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -705,7 +705,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "2.0",
             "autoReferenced": true
           }
         },
