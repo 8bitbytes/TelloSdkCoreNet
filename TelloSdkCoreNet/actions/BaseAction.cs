@@ -12,30 +12,34 @@ namespace TelloSdkCoreNet.actions
             _client = client;
         }
 
-        public TelloUdpClient Client => _client;
+        public TelloUdpClient Client
+        {
+            get { return _client; }
+            set { _client = value; }
+        }
 
         public Exception LastException => _lastException;
 
         public string ServerResponse => _response;
                 
-        public bool SendCommand(string command)
+        public SdkWrapper.SdkReponses SendCommand(Action command)
         {
-         
+            var serverResponse = SdkWrapper.SdkReponses.FAIL;
             try
             {
                 if (_client == null)
                 {
                     throw new Exception("Client is null");
                 }
-                _client.SendMessage(command);
+                 serverResponse = _client.SendMessage(command);
                 _response = _client.ServerResponse;
             }
             catch(Exception ex)
             {
                 _lastException = ex;
-                return false;
+                return SdkWrapper.SdkReponses.FAIL;
             }
-            return true;
+            return serverResponse;
         }
     }
 }

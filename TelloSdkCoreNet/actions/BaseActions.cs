@@ -17,37 +17,34 @@ namespace TelloSdkCoreNet.actions
         private void CreateActionCache()
         {
             _actionCache = new Dictionary<string, Action>();
+
             //this saves from newing up an object each time
-            var newItem = new Action("Auto takeoff", "takeoff", Client);
+            var newItem = new Action("Auto takeoff", "takeoff",Action.ActionTypes.Control, Client);
             _actionCache.Add("takeoff", newItem);
 
-            newItem = new Action("Auto land", "land", Client);
+            newItem = new Action("Auto land", "land", Action.ActionTypes.Control, Client);
             _actionCache.Add("land", newItem);
 
-            newItem = new Action("command", "command", Client);
+            newItem = new Action("command", "command", Action.ActionTypes.Control, Client);
             _actionCache.Add("command", newItem);
 
             //read commands
-            newItem = new Action("Get current speed", "Speed?", Client);
+            newItem = new Action("Get current speed", "Speed?", Action.ActionTypes.Read, Client);
             _actionCache.Add("speed?", newItem);
 
-            newItem = new Action("Get current battery percentage", "Battery?", Client);
+            newItem = new Action("Get current battery percentage", "Battery?", Action.ActionTypes.Read, Client);
             _actionCache.Add("battery?", newItem);
 
-            newItem = new Action("Get current flight time", "Time?", Client);
+            newItem = new Action("Get current flight time", "Time?", Action.ActionTypes.Read, Client);
             _actionCache.Add("time?", newItem);
 
         }
         public Action TakeOff() => _actionCache.GetValueOrDefault("takeoff");
-
         public Action Land() => _actionCache.GetValueOrDefault("land");
-
         public Action CommandMode() => _actionCache.GetValueOrDefault("command");
-
-
-        public Action QuerySpeed() => _actionCache.GetValueOrDefault("Speed?");
-        public Action QueryBattery() => _actionCache.GetValueOrDefault("Battery?");
-        public Action QueryFlightTime() => _actionCache.GetValueOrDefault("Time?");
+        public Action QuerySpeed() => _actionCache.GetValueOrDefault("speed?");
+        public Action QueryBattery() => _actionCache.GetValueOrDefault("battery?");
+        public Action QueryFlightTime() => _actionCache.GetValueOrDefault("time?");
 
         public SdkWrapper.SdkReponses CommandModeGuard()
         {

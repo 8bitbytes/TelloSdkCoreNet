@@ -20,7 +20,7 @@ namespace TelloSdkCoreNet.actions
 
         private Action CreateAction(int speed)
         {
-            return new Action("speed", $"speed {speed}",Client);
+            return new Action("speed", $"speed {speed}",Action.ActionTypes.Set,Client);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace TelloDroneSimulator
     {
         private const int listenPort = 8889;
         private static int speed = 0;
+        private static int battery = 100;
         public static int Main()
         {
             bool done = false;
@@ -61,7 +62,13 @@ namespace TelloDroneSimulator
                     }
                 case "Battery?":
                     {
-                        return "95";
+                        var retval = battery;
+                        battery -= 10;
+                        if(battery < 0)
+                        {
+                            battery = 0;
+                        }
+                        return retval.ToString();
                     }
                 case "Time?":
                     {

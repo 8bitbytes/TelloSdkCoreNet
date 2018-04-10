@@ -6,8 +6,15 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            //var wrapper = new SdkWrapper();
-            /* var resp = wrapper.ExecuteActions(new TelloSdkCoreNet.actions.Action[]
+            var wrapper = new SdkWrapper();
+            var fp = TelloSdkCoreNet.flightplans.FlightPlan.Materialize(System.IO.File.ReadAllText(@"C:\Users\hallp\Downloads\TelloSdkCoreNet-development\TelloSdkCoreNet-development\TestApp\FP_4-10-2018 24809 PM_1f6623a2.json.fp"));
+            fp.Items.Add(new TelloSdkCoreNet.flightplans.FlightPlanItem
+            {
+                Action = wrapper.BaseActions.QueryBattery()
+            });
+               
+            wrapper.ExecuteFlightPlan(fp);
+            /*var resp = wrapper.ExecuteActions(new TelloSdkCoreNet.actions.Action[]
              {
                  wrapper.BaseActions.TakeOff(),
                  wrapper.FlipActions.FlipBackLeft(),
@@ -23,11 +30,50 @@ namespace TestApp
 
 
             //wrapper.BaseActions.Land().Execute();
+            //CreateFlightPlan();
             PrintMenu();
 
             Console.ReadLine();
         }
+        static void CreateFlightPlan()
+        {
+            var wrapper = new SdkWrapper();
+            var fp = new TelloSdkCoreNet.flightplans.FlightPlan();
+            var fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
 
+            fpItem.Action = wrapper.BaseActions.CommandMode();
+            fpItem.NumberOfTimesToExecute = 1;
+            fpItem.SecondsToWaitBeforeNext = 2;
+
+            fp.Items.Add(fpItem);
+
+            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+            fpItem.Action = wrapper.BaseActions.TakeOff();
+
+            fp.Items.Add(fpItem);
+
+            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+            fpItem.Action = wrapper.FlipActions.FlipBackLeft();
+            fp.Items.Add(fpItem);
+
+            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+            fpItem.Action = wrapper.FlipActions.FlipBackRight();
+            fp.Items.Add(fpItem);
+
+            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+            fpItem.Action = wrapper.RotationActions.RotateClockwise(45);
+            fp.Items.Add(fpItem);
+
+            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+            fpItem.Action = wrapper.FlyActions.FlyDownward(40);
+            fp.Items.Add(fpItem);
+
+            fpItem = new TelloSdkCoreNet.flightplans.FlightPlanItem();
+            fpItem.Action = wrapper.BaseActions.Land();
+            fp.Items.Add(fpItem);
+
+            fp.Save("");
+        }
         static void PrintMenu(){
             var done = false;
             var wrapper = new SdkWrapper();
@@ -40,6 +86,7 @@ namespace TestApp
                 Console.WriteLine("4.Fly forward");
                 Console.WriteLine("5.Fly back");
                 Console.WriteLine("6.Rotate");
+                Console.WriteLine("7.Battery %");
 
                 var choice = Console.ReadLine();
 
@@ -73,6 +120,16 @@ namespace TestApp
                     case "6":
                         {
                             wrapper.RotationActions.RotateClockwise(360).Execute();
+                            break;
+                        }
+                    case "7":
+                        {
+                            var resp = wrapper.BaseActions.QueryBattery().Execute();
+                            if(resp == SdkWrapper.SdkReponses.OK)
+                            {
+                                Console.WriteLine($"Battery percentage is {wrapper.BaseActions.QueryBattery().ServerResponse}%");
+                                Console.ReadLine();
+                            }
                             break;
                         }
 

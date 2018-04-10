@@ -5,26 +5,32 @@ namespace TelloSdkCoreNet.actions
     {
         private string _actionName;
         private string _actionCommand;
+        private ActionTypes _actionType;
         private Exception _lastException;
-        public string ActionName => _actionName;
 
-        public string ActionCommand => _actionCommand;
-
-        public Exception Error => _lastException;
-
-        
-        public Action(string actionName, string actionCommand, TelloUdpClient socket = null) :
-            base(socket)
+        public enum ActionTypes
         {
-            _actionCommand = actionCommand;
-            _actionName = actionName;
+            Control,
+            Read,
+            Set
+        }
+        public string Name => _actionName;
+        public string Command => _actionCommand;
+        public ActionTypes Type => _actionType;
+        public Exception Error => _lastException;
+               
+        
+        public Action(string name, string command,ActionTypes type, TelloUdpClient client = null) :
+            base(client)
+        {
+            _actionCommand = command;
+            _actionName = name;
+            _actionType = type;
             
         }
         public SdkWrapper.SdkReponses Execute()
         {
-            
-            var retval = SendCommand(_actionCommand)? SdkWrapper.SdkReponses.OK 
-                                              : SdkWrapper.SdkReponses.FAIL;
+            var retval = SendCommand(this);
             _lastException = base.LastException;
             return retval;
         }

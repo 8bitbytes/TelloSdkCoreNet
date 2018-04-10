@@ -20,19 +20,26 @@ namespace TelloSdkCoreNet
         }
 
         public string ServerResponse => _serverReponse;
-        public bool SendMessage(string message)
+        public SdkWrapper.SdkReponses SendMessage(actions.Action action)
         {
             if (_client == null)
             {
-                return false;
+                return SdkWrapper.SdkReponses.FAIL;
             }
             _client.Connect(_endpoint);
-            var data = Encoding.ASCII.GetBytes(message);
+            var data = Encoding.ASCII.GetBytes(action.Command);
             _client.Send(data, data.Length);
-            var RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            var RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, _endpoint.Port + 1);
             var receiveBytes = _client.Receive(ref RemoteIpEndPoint);
             _serverReponse = Encoding.ASCII.GetString(receiveBytes);
-            return true;
+
+            if(action.Type == actions.Action.ActionTypes.Read)
+            {
+                return _serverReponse == "FAIL" ? SdkWrapper.SdkReponses.FAIL
+                                                : SdkWrapper.SdkReponses.OK;
+            }
+            return _serverReponse == "OK" ? SdkWrapper.SdkReponses.OK
+                                          : SdkWrapper.SdkReponses.FAIL;
         }
 
         public void Close()

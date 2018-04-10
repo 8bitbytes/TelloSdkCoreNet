@@ -68,7 +68,7 @@ namespace TelloSdkCoreNet.actions
 
         private Action CreateAction(FlyDirections direction, int distance)
         {
-            return new Action(direction.ToString(), $"{direction.ToString().ToLower()} {distance}", Client);
+            return new Action(direction.ToString(), $"{direction.ToString().ToLower()} {distance}",Action.ActionTypes.Control, Client);
         }
 
     }
