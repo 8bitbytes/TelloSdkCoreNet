@@ -25,7 +25,7 @@ namespace TelloSdkCoreNet.flightplans
         public FlightPlanItem()
         {
             NumberOfTimesToExecute = 1;
-            SecondsToWaitBeforeNext = 2;
+            SecondsToWaitBeforeNext = 5;
         }
     }
 }

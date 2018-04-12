@@ -29,13 +29,13 @@ namespace TelloSdkCoreNet.actions
             _actionCache.Add("command", newItem);
 
             //read commands
-            newItem = new Action("Get current speed", "Speed?", Action.ActionTypes.Read, Client);
+            newItem = new Action("Get current speed", "speed?", Action.ActionTypes.Read, Client);
             _actionCache.Add("speed?", newItem);
 
-            newItem = new Action("Get current battery percentage", "Battery?", Action.ActionTypes.Read, Client);
+            newItem = new Action("Get current battery percentage", "battery?", Action.ActionTypes.Read, Client);
             _actionCache.Add("battery?", newItem);
 
-            newItem = new Action("Get current flight time", "Time?", Action.ActionTypes.Read, Client);
+            newItem = new Action("Get current flight time", "time?", Action.ActionTypes.Read, Client);
             _actionCache.Add("time?", newItem);
 
         }

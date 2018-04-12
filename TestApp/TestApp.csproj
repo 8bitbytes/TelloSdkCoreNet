@@ -9,4 +9,10 @@
     <ProjectReference Include="..\TelloSdkCoreNet\TelloSdkCoreNet.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="FP_4-10-2018 24809 PM_1f6623a2.json.fp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestApp\FP_4-10-18 102058 PM_b59c89eb.json.fp" />
+  </ItemGroup>
 </Project>

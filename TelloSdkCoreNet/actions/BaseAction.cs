@@ -36,6 +36,11 @@ namespace TelloSdkCoreNet.actions
             }
             catch(Exception ex)
             {
+                if(command.Type == Action.ActionTypes.CommandMode)
+                {
+                    //drone is probably already in command mode. Continue
+                    return SdkWrapper.SdkReponses.OK;
+                }
                 _lastException = ex;
                 return SdkWrapper.SdkReponses.FAIL;
             }

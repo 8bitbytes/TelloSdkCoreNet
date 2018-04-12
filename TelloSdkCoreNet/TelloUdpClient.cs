@@ -10,6 +10,7 @@ namespace TelloSdkCoreNet
         private UdpClient _client;
         private IPAddress _ipaddress;
         private IPEndPoint _endpoint;
+        private IPEndPoint _remoteIpEndPoint;
         private string _serverReponse;
         private bool _commandMode = false;
 
@@ -18,6 +19,7 @@ namespace TelloSdkCoreNet
             _client = new UdpClient();
             _ipaddress = ipaddress;
             _endpoint = endpoint;
+            _remoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
         }
 
         public string ServerResponse => _serverReponse;
@@ -35,9 +37,8 @@ namespace TelloSdkCoreNet
             _client.Connect(_endpoint);
             var data = Encoding.ASCII.GetBytes(action.Command);
             _client.Send(data, data.Length);
-            var RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, _endpoint.Port + 1);
             _client.Client.ReceiveTimeout = 2500;
-            var receiveBytes = _client.Receive(ref RemoteIpEndPoint);
+            var receiveBytes = _client.Receive(ref _remoteIpEndPoint);
             _serverReponse = Encoding.ASCII.GetString(receiveBytes);
 
             if(action.Type == actions.Action.ActionTypes.Read)
@@ -56,6 +57,7 @@ namespace TelloSdkCoreNet
         public void Close()
         {
             _client.Close();
+            _client.Dispose();
         }
     }
 }
