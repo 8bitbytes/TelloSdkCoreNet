@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using TelloSdkCoreNet.actions;
 
 namespace TelloSdkCoreNet
 {
-    public class SdkWrapper : IDisposable
+    public class SdkWrapper
     {
         private TelloUdpClient _udpClient;
         private IPAddress _ipAddress;
         private IPEndPoint _endpoint;
         private Exception _lastException;
+        private static readonly SdkWrapper _instance = new SdkWrapper();
         public enum SdkReponses
         {
             OK,
@@ -23,7 +25,9 @@ namespace TelloSdkCoreNet
         public SpeedAction SpeedAction;
 
         public Exception LastException => _lastException;
-       public SdkWrapper()
+
+        public static SdkWrapper Instance => _instance;
+        private SdkWrapper()
         {
             CreateClient();
             FlipActions = new FlipActions(_udpClient);
@@ -33,49 +37,47 @@ namespace TelloSdkCoreNet
             SpeedAction = new SpeedAction(_udpClient);
         }
 
-        public void ShutDown(){
-            _udpClient.Close();
-        }
-        public void Dispose()
+        public void Shutdown()
         {
             _udpClient.Close();
+        }
+
+        public SdkReponses ExecuteFlightPlan(flightplans.FlightPlan flightPlan)
+        {
+            var nonCommandActions = flightPlan.Items.Where(a => a.Action.Type == TelloSdkCoreNet.actions.Action.ActionTypes.Read).ToArray();
+            if (nonCommandActions.Length > 0)
+            {
+                throw new ArgumentException("Flight plans cannot include query actions");
+            }
+            foreach (var fpi in flightPlan.Items)
+            {
+                var exeCount = fpi.NumberOfTimesToExecute;
+                while (exeCount > 0)
+                {
+                    fpi.Action.Client = _udpClient;
+                    if (fpi.Action.Execute() == SdkReponses.FAIL)
+                    {
+                        if(fpi.Action.LastException != null)
+                        {
+                            throw fpi.Action.LastException;   
+                        }
+                        return SdkReponses.FAIL;
+                    }
+                    System.Threading.Thread.Sleep((int)fpi.SecondsToWaitBeforeNext * 1000);
+                    exeCount--;
+                }
+            }
+            return SdkReponses.OK;
         }
 
         private void CreateClient()
         {
             _ipAddress = IPAddress.Parse("192.168.10.1");
+            //_ipAddress = IPAddress.Parse("192.168.1.12");
             _endpoint = new IPEndPoint(_ipAddress, 8889);
             _udpClient = new TelloUdpClient(_ipAddress,_endpoint);
         }
-        public SdkReponses ExecuteAction(actions.Action action)
-        {
-            if (BaseActions.CommandModeGuard() == SdkReponses.FAIL)
-            {
-                _lastException = BaseActions.LastException;
-                return SdkReponses.FAIL;
-            }
-            return action.Execute();
-        }
-        public SdkReponses ExecuteActions(actions.Action[] actions,int secondsBetweenCommand)
-        {
-            if (BaseActions.CommandModeGuard() == SdkReponses.FAIL)
-            {
-                _lastException = BaseActions.CommandMode().LastException;
-                return SdkReponses.FAIL;
-            }
-
-            foreach(var action in actions)
-            {
-               var resp = action.Execute();
-                if(resp == SdkReponses.FAIL)
-                {
-                    _lastException = action.LastException;
-                    Console.WriteLine($"Action {action.ActionName} failed to execute");
-                    return resp;
-                }
-                System.Threading.Thread.Sleep(secondsBetweenCommand * 1000);
-            }
-            return SdkReponses.OK;
-        }
+        
+        
     }
 }

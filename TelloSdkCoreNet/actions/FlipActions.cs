@@ -45,7 +45,7 @@
 
         private Action CreateAction(FlipDirections direction)
         {
-            return new Action(direction.ToString(),$"flip {getFlipDirectionsString(direction)}",Client);
+            return new Action(direction.ToString(),$"flip {getFlipDirectionsString(direction)}",Action.ActionTypes.Control,Client);
         }
 
         private string getFlipDirectionsString(FlipDirections direction)

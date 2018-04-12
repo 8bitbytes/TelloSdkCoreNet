@@ -674,13 +674,13 @@
       "projectName": "TelloDroneSimulator",
       "projectPath": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloDroneSimulator/TelloDroneSimulator.csproj",
       "packagesPath": "/Users/peterhallock/.nuget/packages/",
-      "outputPath": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloDroneSimulator/obj",
+      "outputPath": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloDroneSimulator/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/peterhallock/.config/NuGet/NuGet.Config"
+        "/Users/peterhallock/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -703,9 +703,8 @@
       "netcoreapp2.0": {
         "dependencies": {
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
-            "version": "2.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },

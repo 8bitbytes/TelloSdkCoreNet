@@ -30,7 +30,7 @@ namespace TelloSdkCoreNet.actions
 
         private Action CreateAction(Rotations direction, int degrees)
         {
-            return new Action(direction.ToString(), $"{getRotationString(direction)} {degrees}", Client);
+            return new Action(direction.ToString(), $"{getRotationString(direction)} {degrees}",Action.ActionTypes.Control, Client);
         }
 
         private string getRotationString(Rotations direction)
