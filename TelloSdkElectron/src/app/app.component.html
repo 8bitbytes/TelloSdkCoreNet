@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+<h2>Here are some actions you start perform: </h2>
+<ul>
+   <li>
+    <button (click)="takeOff()" >Take Off</button>
+  </li>
+  <li>
+    <button (click)="land()" >Land</button>
+  </li>
+  <li>
+    <button (click)="flipRight()" >Flip Right</button>
+  </li>
+  <li>
+    <button (click)="flipLeft()" >Flip Left</button>
+  </li>
+  <li>
+    <button (click)="flipForward()" >Flip Forward</button>
+  </li>
+  <li>
+    <button (click)="flipBack()" >Flip Back</button>
+  </li>
+  <li>
+      <button (click)="executeAllActions()" >Execute Actions</button>
+    </li>
+</ul>
+<hr />
+<h2>Actions added</h2>
+<ul>
+  <li *ngFor="let action of actionList">
+    {{action.name}}
+  </li>
+</ul>
+
+

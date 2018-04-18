@@ -56,11 +56,11 @@ namespace TelloDroneSimulator
         {
             switch (command)
             {
-                case "Speed?":
+                case "speed?":
                     {
                         return speed.ToString();
                     }
-                case "Battery?":
+                case "battery?":
                     {
                         var retval = battery;
                         battery -= 10;
@@ -70,7 +70,7 @@ namespace TelloDroneSimulator
                         }
                         return retval.ToString();
                     }
-                case "Time?":
+                case "time?":
                     {
                         return "10";
                     }

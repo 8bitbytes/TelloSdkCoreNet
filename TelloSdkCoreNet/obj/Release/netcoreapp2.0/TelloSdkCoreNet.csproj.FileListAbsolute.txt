@@ -1,0 +1,8 @@
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\bin\Release\netcoreapp2.0\TelloSdkCoreNet.deps.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\bin\Release\netcoreapp2.0\TelloSdkCoreNet.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\bin\Release\netcoreapp2.0\TelloSdkCoreNet.pdb
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Release\netcoreapp2.0\TelloSdkCoreNet.csproj.CoreCompileInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Release\netcoreapp2.0\TelloSdkCoreNet.AssemblyInfoInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Release\netcoreapp2.0\TelloSdkCoreNet.AssemblyInfo.cs
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Release\netcoreapp2.0\TelloSdkCoreNet.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Release\netcoreapp2.0\TelloSdkCoreNet.pdb
