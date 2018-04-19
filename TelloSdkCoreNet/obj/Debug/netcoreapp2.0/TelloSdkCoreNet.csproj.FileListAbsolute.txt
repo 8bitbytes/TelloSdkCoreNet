@@ -16,3 +16,12 @@ c:/users/hallp/source/repos/TelloSdkCoreNet/TelloSdkCoreNet/obj/Debug/netcoreapp
 /Users/peterhallock/Documents/TelloSdkCoreNet/TelloSdkCoreNet/obj/Debug/netcoreapp2.0/TelloSdkCoreNet.AssemblyInfo.cs
 /Users/peterhallock/Documents/TelloSdkCoreNet/TelloSdkCoreNet/obj/Debug/netcoreapp2.0/TelloSdkCoreNet.dll
 /Users/peterhallock/Documents/TelloSdkCoreNet/TelloSdkCoreNet/obj/Debug/netcoreapp2.0/TelloSdkCoreNet.pdb
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\bin\Debug\netcoreapp2.0\TelloSdkCoreNet.deps.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\bin\Debug\netcoreapp2.0\TelloSdkCoreNet.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\bin\Debug\netcoreapp2.0\TelloSdkCoreNet.pdb
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Debug\netcoreapp2.0\TelloSdkCoreNet.csprojResolveAssemblyReference.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Debug\netcoreapp2.0\TelloSdkCoreNet.csproj.CoreCompileInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Debug\netcoreapp2.0\TelloSdkCoreNet.AssemblyInfoInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Debug\netcoreapp2.0\TelloSdkCoreNet.AssemblyInfo.cs
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Debug\netcoreapp2.0\TelloSdkCoreNet.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloSdkCoreNet\obj\Debug\netcoreapp2.0\TelloSdkCoreNet.pdb

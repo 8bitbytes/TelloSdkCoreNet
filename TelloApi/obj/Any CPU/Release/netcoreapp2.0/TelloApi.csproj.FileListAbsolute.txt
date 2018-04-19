@@ -1,0 +1,12 @@
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\bin\Any CPU\Release\netcoreapp2.0\TelloApi.deps.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\bin\Any CPU\Release\netcoreapp2.0\TelloApi.runtimeconfig.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\bin\Any CPU\Release\netcoreapp2.0\TelloApi.runtimeconfig.dev.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\bin\Any CPU\Release\netcoreapp2.0\TelloApi.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\bin\Any CPU\Release\netcoreapp2.0\TelloApi.pdb
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\bin\Any CPU\Release\netcoreapp2.0\TelloSdkCoreNet.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\bin\Any CPU\Release\netcoreapp2.0\TelloSdkCoreNet.pdb
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\obj\Any CPU\Release\netcoreapp2.0\TelloApi.csproj.CoreCompileInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\obj\Any CPU\Release\netcoreapp2.0\TelloApi.AssemblyInfoInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\obj\Any CPU\Release\netcoreapp2.0\TelloApi.AssemblyInfo.cs
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\obj\Any CPU\Release\netcoreapp2.0\TelloApi.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloApi\obj\Any CPU\Release\netcoreapp2.0\TelloApi.pdb

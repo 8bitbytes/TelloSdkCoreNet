@@ -14,6 +14,7 @@ namespace TelloSdkCoreNet
         private string _serverReponse;
         private bool _commandMode = false;
 
+        public string Host => _ipaddress.ToString();
         public TelloUdpClient(IPAddress ipaddress,IPEndPoint endpoint)
         {
             _client = new UdpClient();

@@ -664,28 +664,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/peterhallock/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\hallp\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloDroneSimulator/TelloDroneSimulator.csproj",
+      "projectUniqueName": "C:\\Users\\hallp\\Documents\\github\\TelloSdkCoreNet\\TelloDroneSimulator\\TelloDroneSimulator.csproj",
       "projectName": "TelloDroneSimulator",
-      "projectPath": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloDroneSimulator/TelloDroneSimulator.csproj",
-      "packagesPath": "/Users/peterhallock/.nuget/packages/",
-      "outputPath": "/Users/peterhallock/Documents/git/TelloSdkCoreNet/TelloDroneSimulator/obj/",
+      "projectPath": "C:\\Users\\hallp\\Documents\\github\\TelloSdkCoreNet\\TelloDroneSimulator\\TelloDroneSimulator.csproj",
+      "packagesPath": "C:\\Users\\hallp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hallp\\Documents\\github\\TelloSdkCoreNet\\TelloDroneSimulator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/peterhallock/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\hallp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.campsys.com:8090/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

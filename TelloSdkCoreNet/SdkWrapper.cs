@@ -26,6 +26,15 @@ namespace TelloSdkCoreNet
 
         public Exception LastException => _lastException;
 
+        public string ConnectedTo
+        {
+            get
+            {
+                return _udpClient == null ? "Disconnected"
+                                          : $"Connected to:{_udpClient.Host}";
+            }
+        }
+
         public static SdkWrapper Instance => _instance;
         private SdkWrapper()
         {
@@ -72,7 +81,7 @@ namespace TelloSdkCoreNet
 
         private void CreateClient()
         {
-            _ipAddress = IPAddress.Parse("192.168.10.1");
+            _ipAddress = IPAddress.Parse("10.30.54.81");
             //_ipAddress = IPAddress.Parse("192.168.1.12");
             _endpoint = new IPEndPoint(_ipAddress, 8889);
             _udpClient = new TelloUdpClient(_ipAddress,_endpoint);

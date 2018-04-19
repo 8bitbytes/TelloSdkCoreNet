@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloSdkCoreNet", "TelloSdkCoreNet\TelloSdkCoreNet.csproj", "{BB1665AD-FC11-4E64-9A1E-075CB39A6752}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelloSdkCoreNet", "TelloSdkCoreNet\TelloSdkCoreNet.csproj", "{BB1665AD-FC11-4E64-9A1E-075CB39A6752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{AA866C5C-2B27-43A3-9AC7-906D7F18C085}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{AA866C5C-2B27-43A3-9AC7-906D7F18C085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloDroneSimulator", "TelloDroneSimulator\TelloDroneSimulator.csproj", "{99D269ED-4031-40DB-8EA3-335AA053C5A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelloDroneSimulator", "TelloDroneSimulator\TelloDroneSimulator.csproj", "{99D269ED-4031-40DB-8EA3-335AA053C5A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelloApi", "TelloApi\TelloApi.csproj", "{DFE5B04B-A0DC-4896-9F70-57B982235D1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{99D269ED-4031-40DB-8EA3-335AA053C5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99D269ED-4031-40DB-8EA3-335AA053C5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99D269ED-4031-40DB-8EA3-335AA053C5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE5B04B-A0DC-4896-9F70-57B982235D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE5B04B-A0DC-4896-9F70-57B982235D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE5B04B-A0DC-4896-9F70-57B982235D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE5B04B-A0DC-4896-9F70-57B982235D1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

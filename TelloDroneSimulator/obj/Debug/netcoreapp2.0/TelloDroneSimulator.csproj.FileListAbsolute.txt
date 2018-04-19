@@ -20,3 +20,14 @@ c:/users/hallp/source/repos/TelloSdkCoreNet/TelloDroneSimulator/obj/Debug/netcor
 /Users/peterhallock/Documents/TelloSdkCoreNet/TelloDroneSimulator/obj/Debug/netcoreapp2.0/TelloDroneSimulator.AssemblyInfo.cs
 /Users/peterhallock/Documents/TelloSdkCoreNet/TelloDroneSimulator/obj/Debug/netcoreapp2.0/TelloDroneSimulator.dll
 /Users/peterhallock/Documents/TelloSdkCoreNet/TelloDroneSimulator/obj/Debug/netcoreapp2.0/TelloDroneSimulator.pdb
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\bin\Debug\netcoreapp2.0\TelloDroneSimulator.deps.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\bin\Debug\netcoreapp2.0\TelloDroneSimulator.runtimeconfig.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\bin\Debug\netcoreapp2.0\TelloDroneSimulator.runtimeconfig.dev.json
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\bin\Debug\netcoreapp2.0\TelloDroneSimulator.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\bin\Debug\netcoreapp2.0\TelloDroneSimulator.pdb
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\obj\Debug\netcoreapp2.0\TelloDroneSimulator.csprojResolveAssemblyReference.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\obj\Debug\netcoreapp2.0\TelloDroneSimulator.csproj.CoreCompileInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\obj\Debug\netcoreapp2.0\TelloDroneSimulator.AssemblyInfoInputs.cache
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\obj\Debug\netcoreapp2.0\TelloDroneSimulator.AssemblyInfo.cs
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\obj\Debug\netcoreapp2.0\TelloDroneSimulator.dll
+C:\Users\hallp\Documents\github\TelloSdkCoreNet\TelloDroneSimulator\obj\Debug\netcoreapp2.0\TelloDroneSimulator.pdb
